@@ -1,7 +1,8 @@
+#application.yml file
 info:
   app:
-    name: My Company
-    description: Microservice
+    name: Solidarmed Zimbabwe
+    description: DFID Microservice
 
 spring:
   datasource:
