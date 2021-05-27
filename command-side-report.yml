@@ -1,15 +1,15 @@
 ## Info endpoint
 info:
   app:
-    name: Blog service - Command Side
-    description: Blog service - Command Side (CQRS)
+    name: Report service - Command Side
+    description: Report service - Command Side (CQRS)
 
 management:
   security: 
     enabled: false
 
 server:
-  port: ${PORT:8080}
+  port: ${PORT:8082}
 
     
 logging:
@@ -18,17 +18,17 @@ logging:
     org.springframework: INFO
     org.axonframework: INFO
     com.idugalic: DEBUG
+    
+axon:
+  amqp:
+    exchange: report.events.fanout.exchange
 
 spring:
   rabbitmq:
     hostname: 127.0.0.1
     username: guest
     password: guest
-    
-axon:
-  amqp:
-    exchange: blog.events.fanout.exchange
- 
+
 security:
   oauth2:
     resource:
@@ -60,7 +60,6 @@ spring:
     hostname: my-rabbit
     username: test
     password: password
-
 
 eureka:
 # Register our microservices to Eureka using hostnames in a Docker environment will not work, they will all get 

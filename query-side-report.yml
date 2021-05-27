@@ -1,16 +1,14 @@
-## Info endpoint
 info:
   app:
-    name: Project service - Command Side
-    description: Project service - Command Side (CQRS)
+    name: Report service - Query Side
+    description: Report service - Query Side (CQRS)
 
 management:
   security: 
     enabled: false
 
 server:
-  port: ${PORT:8082}
-
+  port: ${PORT:8083}
     
 logging:
   level:
@@ -20,15 +18,20 @@ logging:
     com.idugalic: DEBUG
     
 axon:
-  amqp:
-    exchange: project.events.fanout.exchange
+  eventhandling:
+    processors:
+      default:
+        source: messageSourceProject
 
 spring:
+  application:
+    exchange: report.events.fanout.exchange
+    queue: report.view.event.stream
   rabbitmq:
     hostname: 127.0.0.1
     username: guest
     password: guest
-
+      
 security:
   oauth2:
     resource:
@@ -75,9 +78,20 @@ authserver:
   port: 9999
   contextPath: uaa
 
+
 ---
 spring:
   profiles: cloud
+  jpa:
+    database:
+    show-sql: true
+    hibernate:
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+      ddl-auto: create
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+
 
 authserver:
   hostname: ${vcap.services.authserver.credentials.uri}

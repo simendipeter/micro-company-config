@@ -1,14 +1,16 @@
+## Info endpoint
 info:
   app:
-    name: Project service - Query Side
-    description: Project service - Query Side (CQRS)
+    name: Dfid service - Command Side
+    description: Dfid service - Command Side (CQRS)
 
 management:
   security: 
     enabled: false
 
 server:
-  port: ${PORT:8083}
+  port: ${PORT:8080}
+
     
 logging:
   level:
@@ -16,22 +18,17 @@ logging:
     org.springframework: INFO
     org.axonframework: INFO
     com.idugalic: DEBUG
-    
-axon:
-  eventhandling:
-    processors:
-      default:
-        source: messageSourceProject
 
 spring:
-  application:
-    exchange: project.events.fanout.exchange
-    queue: project.view.event.stream
   rabbitmq:
     hostname: 127.0.0.1
     username: guest
     password: guest
-      
+    
+axon:
+  amqp:
+    exchange: dfid.events.fanout.exchange
+ 
 security:
   oauth2:
     resource:
@@ -64,6 +61,7 @@ spring:
     username: test
     password: password
 
+
 eureka:
 # Register our microservices to Eureka using hostnames in a Docker environment will not work, they will all get 
 # one and the same hostname. Instead we configure them to use its IP address during registration with Eureka.
@@ -78,20 +76,9 @@ authserver:
   port: 9999
   contextPath: uaa
 
-
 ---
 spring:
   profiles: cloud
-  jpa:
-    database:
-    show-sql: true
-    hibernate:
-      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
-      ddl-auto: create
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQL5Dialect
-
 
 authserver:
   hostname: ${vcap.services.authserver.credentials.uri}

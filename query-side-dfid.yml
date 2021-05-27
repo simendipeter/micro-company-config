@@ -1,7 +1,7 @@
 info:
   app:
-    name: Blog service - Query Side
-    description: Blog service - Query Side (CQRS)
+    name: Dfid service - Query Side
+    description: Dfid service - Query Side (CQRS)
 
 management:
   security: 
@@ -25,8 +25,8 @@ axon:
 
 spring:
   application:
-    exchange: blog.events.fanout.exchange
-    queue: blog.view.event.stream
+    exchange: dfid.events.fanout.exchange
+    queue: dfid.view.event.stream
   rabbitmq:
     hostname: 127.0.0.1
     username: guest
