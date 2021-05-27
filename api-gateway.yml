@@ -23,13 +23,13 @@ authserver:
 
 zuul:
   routes:
-    command-side-blog:
+    command-side-dfid:
       path: /command/blog/**
-    query-side-blog:
+    query-side-dfid:
       path: /query/blog/**
-    command-side-project:
+    command-side-report:
       path: /command/project/**
-    query-side-project:
+    query-side-report:
       path: /query/project/**
 
 # Define the Eureka server that handles service registration
@@ -48,9 +48,9 @@ spring:
   application:
     queue: gateway.event.stream
     blog:
-      exchange: blog.events.fanout.exchange
+      exchange: dfid.events.fanout.exchange
     project:
-      exchange: project.events.fanout.exchange
+      exchange: report.events.fanout.exchange
   rabbitmq:
     hostname: 127.0.0.1
     username: guest
