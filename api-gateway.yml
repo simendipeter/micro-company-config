@@ -24,13 +24,13 @@ authserver:
 zuul:
   routes:
     command-side-dfid:
-      path: /command/blog/**
+      path: /command/dfid/**
     query-side-dfid:
-      path: /query/blog/**
+      path: /query/dfid/**
     command-side-report:
-      path: /command/project/**
+      path: /command/report/**
     query-side-report:
-      path: /query/project/**
+      path: /query/report/**
 
 # Define the Eureka server that handles service registration
 eureka:
