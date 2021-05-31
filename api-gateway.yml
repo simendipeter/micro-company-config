@@ -31,6 +31,10 @@ zuul:
       path: /command/report/**
     query-side-report:
       path: /query/report/**
+    command-side-terminology:
+      path: /command/terminology/**
+    query-side-terminology:
+      path: /query/terminology/**
 
 # Define the Eureka server that handles service registration
 eureka:
@@ -47,10 +51,12 @@ axon:
 spring:
   application:
     queue: gateway.event.stream
-    blog:
+    dfid:
       exchange: dfid.events.fanout.exchange
-    project:
+    report:
       exchange: report.events.fanout.exchange
+    terminology:
+      exchange: terminology.events.fanout.exchange
   rabbitmq:
     hostname: 127.0.0.1
     username: guest
