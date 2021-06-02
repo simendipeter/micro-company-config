@@ -57,7 +57,7 @@ authserver:
 spring:
   profiles: docker
   rabbitmq:
-    hostname: localhost
+    hostname: my-rabbit
     username: test
     password: password
 
