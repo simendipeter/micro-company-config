@@ -26,7 +26,7 @@ axon:
 spring:
   application:
     exchange: report.events.fanout.exchange
-    queue: report.view.event.stream
+    queue: dfid.view.event.stream
   rabbitmq:
     hostname: 127.0.0.1
     username: guest
