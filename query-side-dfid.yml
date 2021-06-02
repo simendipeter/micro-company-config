@@ -29,8 +29,8 @@ spring:
     queue: dfid.view.event.stream
   rabbitmq:
     hostname: 127.0.0.1
-    username: guest
-    password: guest
+    username: test
+    password: password
       
 security:
   oauth2:
